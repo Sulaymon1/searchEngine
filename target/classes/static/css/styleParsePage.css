@@ -1,0 +1,32 @@
+body{
+    position: relative;
+}
+.content{
+    margin-top: 3%;
+    margin-left: 2%;
+    float: left;
+    width: 60%;
+}
+
+.search {
+    width: 70%;
+}
+
+.info {
+    width: 70%;
+}
+
+.cities{
+    float: right;
+    margin-right: 8%;
+    margin-top: 3%;
+    width: 25%;
+    max-height: 300px;
+    overflow-y:scroll;
+}
+
+.buttons {
+    float: right;
+    margin-right: 30%;
+}
+

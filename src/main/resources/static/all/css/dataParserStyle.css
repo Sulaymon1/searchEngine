@@ -1,0 +1,20 @@
+body {
+    /* Set "my-sec-counter" to 0 */
+    counter-reset: my-sec-counter;
+}
+
+.dataContent {
+    width: 85%;
+    margin: 5% auto auto;
+}
+
+
+.increment::after {
+    /* Increment "my-sec-counter" by 1 */
+    counter-increment: my-sec-counter;
+    content: counter(my-sec-counter) ;
+}
+
+th {
+    text-align: center;
+}
