@@ -66,7 +66,7 @@ public class ProductParsingService {
         }
 
         if (data != null) {
-            if (data.getEmail() != null)
+            if (data.getEmail() != null  || data.getWebsite() != null)
                 productList.add(data);
         }
     }

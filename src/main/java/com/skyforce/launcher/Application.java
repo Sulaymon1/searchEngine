@@ -16,7 +16,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableJpaRepositories(basePackages = "com.skyforce.repositories")
 @EnableAutoConfiguration
 @EntityScan("com.skyforce.models")
-@EnableAsync(proxyTargetClass = true)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
