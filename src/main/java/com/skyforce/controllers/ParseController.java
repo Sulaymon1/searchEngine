@@ -5,6 +5,7 @@ import com.skyforce.models.DataParser;
 import com.skyforce.models.Info;
 import com.skyforce.services.implementations.DataParserServiceImpl;
 import com.skyforce.services.implementations.ParseServiceImpl;
+import com.skyforce.services.interfaces.DataParserService;
 import com.skyforce.services.interfaces.ParseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,7 +30,7 @@ public class ParseController {
 
 
     @Autowired
-    private DataParserServiceImpl dataParserService;
+    private DataParserService dataParserService;
 
     @GetMapping("/parseCategory")
     public String parseCategory(){
@@ -53,7 +55,7 @@ public class ParseController {
     @ResponseBody
     @SubscribeMapping("initial")
     public Info fetchStatus() {
-        return parseService.getInfo();
+        return dataParserService.getInfo();
     }
 
 }

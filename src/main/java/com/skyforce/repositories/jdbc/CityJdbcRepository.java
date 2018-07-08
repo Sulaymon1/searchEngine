@@ -1,3 +1,4 @@
+/*
 package com.skyforce.repositories.jdbc;
 
 import com.skyforce.models.City;
@@ -10,9 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+*/
 /**
  * Created by Sulaymon on 12.03.2018.
- */
+ *//*
+
 @Repository
 public class CityJdbcRepository {
     private final String SQL_FIND_BY_INPUT = "SELECT 1, * FROM city as t WHERE name_to_lower LIKE :input||'%' " +
@@ -46,3 +49,4 @@ public class CityJdbcRepository {
         return cities;
     }
 }
+*/

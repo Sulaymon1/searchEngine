@@ -22,16 +22,16 @@ public class CopyDBToFile {
     @Value("${storage.path}")
     private String path;
 
-    @Autowired
+    /*@Autowired
     private CopyManager copyManager;
-
+*/
     public String copy(String keyword){
         try {
             FileWriter fileWriter = new FileWriter(path + "/" + keyword + ".txt");
             String sql = "COPY (SELECT address_str, city, email, name, phone_str, website FROM data WHERE keyword='" + keyword.toLowerCase() + "') to stdout (DELIMITER '\t')";
-            copyManager.copyOut(sql, fileWriter);
+//            copyManager.copyOut(sql, fileWriter);
             fileWriter.close();
-        } catch (SQLException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return path;

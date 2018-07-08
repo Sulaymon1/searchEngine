@@ -16,7 +16,5 @@ import java.util.Optional;
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     Optional<Category> findByCategoryNameToLower(String category);
-
-    @Query("select u from Category u  where u.categoryNameToLower like %:input%")
-    List<Category> findAllByInput(@Param("input") String input, Pageable pageable);
+    List<Category> findAllByCategoryNameToLowerStartsWith(String category, Pageable pageable);
 }

@@ -21,15 +21,16 @@ public class Data {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String keyword;
-    private String city;
+    @OneToOne( fetch = FetchType.LAZY)
+    private Category category;
+    @OneToOne(fetch = FetchType.LAZY)
+    private City city;
 
     private String name;
     private String uri;
     private String email;
     private String website;
-    private String phoneStr;
-    private String addressStr;
+    private String phone;
+    private String address;
 
-    private String errors;
 }

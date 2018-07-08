@@ -82,12 +82,12 @@ function doSearch() {
                             name += '<li><input value="' + data[i].email + '" class="inline-edit" type="text"></li>'
                         }
 
-                        if(data[i].phoneStr !== null){
-                            name += '<li><input value="' + data[i].phoneStr + '" class="inline-edit" type="text"></li>'
+                        if(data[i].phone !== null){
+                            name += '<li><input value="' + data[i].phone + '" class="inline-edit" type="text"></li>'
                         }
 
-                        if(data[i].addressStr !== null){
-                            name += '<li><input value="' + data[i].addressStr + '" class="inline-edit" type="text"></li>'
+                        if(data[i].address !== null){
+                            name += '<li><input value="' + data[i].address + '" class="inline-edit" type="text"></li>'
                         }
 
                         name += '</ul></div>'
@@ -138,12 +138,12 @@ function moreData(){
                             name += '<li><input value="' + data[i].email + '" class="inline-edit" type="text"></li>'
                         }
 
-                        if(data[i].phoneStr !== null){
-                            name += '<li><input value="' + data[i].phoneStr + '" class="inline-edit" type="text"></li>'
+                        if(data[i].phone !== null){
+                            name += '<li><input value="' + data[i].phone + '" class="inline-edit" type="text"></li>'
                         }
 
-                        if(data[i].addressStr !== null){
-                            name += '<li><input value="' + data[i].addressStr + '" class="inline-edit" type="text"></li>'
+                        if(data[i].address !== null){
+                            name += '<li><input value="' + data[i].address + '" class="inline-edit" type="text"></li>'
                         }
 
                         name += '</ul></div>'

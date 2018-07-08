@@ -1,3 +1,4 @@
+/*
 package com.skyforce.repositories.jdbc;
 
 import com.skyforce.models.Category;
@@ -11,9 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+*/
 /**
  * Created by Sulaymon on 11.03.2018.
- */
+ *//*
+
 @Repository
 public class CategoryJdbcRepository {
 
@@ -33,9 +36,8 @@ public class CategoryJdbcRepository {
         if (categoryMap.get(currentId)==null){
             categoryMap.put(currentId, Category.builder()
                     .id(resultSet.getLong(2))
-                    .categoryName(resultSet.getString(3))
+                    .title(resultSet.getString(3))
                     .categoryNameToLower(resultSet.getString(4))
-                    .categoryUri(resultSet.getString(5))
                     .build());
         }
         return categoryMap.get(currentId);
@@ -49,3 +51,4 @@ public class CategoryJdbcRepository {
         return categoryList;
     }
 }
+*/

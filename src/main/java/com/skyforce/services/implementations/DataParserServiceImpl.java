@@ -1,26 +1,28 @@
 package com.skyforce.services.implementations;
 
+import com.skyforce.models.Category;
 import com.skyforce.models.City;
-import com.skyforce.models.Data;
 import com.skyforce.models.DataParser;
-import com.skyforce.repositories.jdbc.DataJdbcRepository;
-import com.skyforce.repositories.jdbc.DataParserJdbcRepository;
+import com.skyforce.models.Info;
+//import com.skyforce.repositories.jdbc.DataJdbcRepository;
+//import com.skyforce.repositories.jdbc.DataParserJdbcRepository;
+import com.skyforce.repositories.jpa.CategoryRepository;
 import com.skyforce.repositories.jpa.CityRepository;
 import com.skyforce.repositories.jpa.DataParserRepository;
-import com.skyforce.repositories.jpa.DataRepository;
 import com.skyforce.services.interfaces.DataParserService;
+import com.skyforce.services.interfaces.ParseService;
 import com.skyforce.util.CopyDBToFile;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,14 +33,11 @@ import java.util.Optional;
  * @version v1.0
  **/
 @Service
+@Slf4j
 public class DataParserServiceImpl implements DataParserService {
 
 
-    private Boolean isWorking = true;
-
-    public Boolean getIsWorking(){
-        return isWorking;
-    }
+    private Boolean isStop = true;
 
     @Autowired
     private DataParserRepository dataParserRepository;
@@ -47,68 +46,118 @@ public class DataParserServiceImpl implements DataParserService {
     private CityRepository cityRepository;
 
     @Autowired
-    private ParseServiceImpl parseService;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    private DataParserJdbcRepository dataParserJdbcRepository;
+    private ParseService parseService;
 
-    @Autowired
-    private DataJdbcRepository dataJdbcRepository;
+    /*@Autowired
+    private DataParserJdbcRepository dataParserJdbcRepository;*/
 
-
-    @Autowired
-    private DataRepository dataRepository;
+//    @Autowired
+//    private DataJdbcRepository dataJdbcRepository;
 
     @Autowired
     private CopyDBToFile copyDBToFile;
 
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+    private List<DataParser> getDataParserList(){
+        return dataParserRepository.findAllByIsCompletedFalse(); // and isCurrentWorking false
+    }
+
     @Override
-    public void addNewDataToParse(DataParser dataParser) {
-        dataParser.setIsCompleted(false);
-        if (dataParser.getStates().size()>0){
-            dataParser.setOnlySelectedStates(true);
-            dataParser.setSize(dataParser.getStates().size());
-        }else dataParser.setSize(0);
-        Optional<DataParser> parserOptional = dataParserRepository.findFirstByKeyword(dataParser.getKeyword());
-        if (!parserOptional.isPresent()){
-            dataParserRepository.save(dataParser);
+    @Transactional
+    public void addNewDataToParse(String categories) {
+        if (categories.length()>0)
+            //if you got many categories
+            for (String categoryTitle: categories.split("\n")) {
+                categoryTitle = categoryTitle.trim();
+                Optional<Category> categoryOptional = categoryRepository.findByCategoryNameToLower(categoryTitle.toLowerCase());
+                if (!categoryOptional.isPresent()){
+                    Category category = Category.builder()
+                            .title(categoryTitle)
+                            .categoryNameToLower(categoryTitle.toLowerCase())
+                            .build();
+                    categoryRepository.save(category);
+                    DataParser dataParser = DataParser.builder()
+                            .category(category)
+                            .size(0)
+                            .isCompleted(false)
+                            .onlySelectedCities(false)
+                            .build();
+                    dataParserRepository.save(dataParser);
+                }
+            }
+        if (isStop){
+            getNextDataToParse();
         }
     }
 
-    private List<DataParser> getDataParserList(){
-       return dataParserRepository.findAllByIsCompletedFalse(); // and isCurrentWorking false
+    private volatile Info info;
+
+    @Override
+    public Info getInfo(){
+        return info;
     }
 
     @Override
     @Async(value = "dataParserProcess")
+    @Transactional
     public void getNextDataToParse() {
-        isWorking = false;
+        isStop = false;
         List<DataParser> dataParserList = getDataParserList();
         if (dataParserList.size() > 0) {
             dataParserList.forEach(dataParser -> {
-                if (dataParser.getOnlySelectedStates()) {
+                /*if (dataParser.getOnlySelectedCities()) {
                     dataParser.getStates().forEach(state -> {
                         List<City> cities = cityRepository.findAllByStateToLower(state.toLowerCase());
-                        parseService.parseByKeyword(dataParser.getKeyword(), cities);
+                        parseService.parseByCategoryAndCities(dataParser.getKeyword(), cities);
                         dataParser.setIsCompleted(true);
                         dataParserRepository.save(dataParser);
                     });
-                } else {
-                    List<City> cityList = cityRepository.findAll();
-                    parseService.parseByKeyword(dataParser.getKeyword(), cityList);
-                    System.out.println("after parsing");
-                    dataParser.setIsCompleted(true);
-                    dataParserRepository.save(dataParser);
+                } else {*/
+
+                List<City> cities = dataParser.getCities();
+                if (cities == null){
+                    cities = cityRepository.findAll();
                 }
+                int size = cities.size();
+                double doubleSize = size;
+                int currentCityNum = 1;
+                info = Info.builder()
+                        .totalCity(size)
+                        .categoryTitle(dataParser.getCategory().getTitle())
+                        .isCompleted(false)
+                        .build();
+                for (City city: cities){
+                    try {
+                        info.setCurrentCityNum(currentCityNum++);
+                        info.setPercent((int)((currentCityNum/doubleSize)*100.0));
+                        parseService.parseByCategoryAndCity(dataParser.getCategory(), city);
+                        dataParser.setCurrentCityNumber(currentCityNum);
+                        dataParserRepository.save(dataParser);
+                        simpMessagingTemplate.convertAndSend("/topic/status", info);
+                    }catch (Throwable e){
+                        log.error("throwable url: "+e.getMessage(), e);
+                    }
+                }
+                info.setIsCompleted(true);
+                simpMessagingTemplate.convertAndSend("/topic/status", info);
+                dataParser.setIsCompleted(true);
+                dataParserRepository.save(dataParser);
+                /*}*/
             });
-            getNextDataToParse(); // it will check for new keywords
+            getNextDataToParse(); // it will check for new categories
         }
+        isStop = true;
     }
 
     @Override
     public void deleteData(String keyword){
-        dataParserJdbcRepository.deleteAllByKeyword(keyword);
-        dataJdbcRepository.deleteAllDataByKeyword(keyword);
+//        dataParserJdbcRepository.deleteAllByKeyword(keyword);
+//        dataJdbcRepository.deleteAllDataByKeyword(keyword);
     }
 
     @Override
@@ -125,7 +174,7 @@ public class DataParserServiceImpl implements DataParserService {
             response.flushBuffer();
             inputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info(e.getMessage(), e);
         }
     }
 
@@ -133,4 +182,6 @@ public class DataParserServiceImpl implements DataParserService {
     public List<DataParser> getAllTasks(){
         return dataParserRepository.findAll();
     }
+
+
 }

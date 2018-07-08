@@ -22,21 +22,29 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class DataParser {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
-    private String keyword;
+
+    @OneToOne
+    private Category category;
+
     @Column(columnDefinition = "boolean default FALSE")
-    private Boolean onlySelectedStates = false;
-    private Integer currentCityNumber = 0;
+    private Boolean onlySelectedCities = false;
+
+    private Integer currentCityNumber = 1;
+
     @Column(columnDefinition = "boolean default FALSE")
     private Boolean isParsingCurrent = false;
+
     @JsonIgnore
-    @ElementCollection
-    private List<String> states;
+    @OneToMany
+    private List<City> cities;
+
     @Column(columnDefinition = "int default 0")
-    private Integer size;
+    private Integer size = 0;
+
     @Column(columnDefinition = "boolean default FALSE")
-    private Boolean isCompleted;
+    private Boolean isCompleted = false;
 }

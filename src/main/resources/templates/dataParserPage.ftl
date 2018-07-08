@@ -41,22 +41,22 @@
     </thead>
     <tbody>
     <#list model.tasks as dataParser>
-    <tr class="${dataParser.keyword?replace(" ","")}">
+    <tr class="${dataParser.category.title?replace(" ","")}">
         <th class="increment" scope="row"></th>
-        <td>${dataParser.keyword}</td>
+        <td>${dataParser.category.title}</td>
         <#if dataParser.isCompleted>
             <td>Done</td>
         <#else >
-            <td  id="${dataParser.keyword?replace(" ","")}">Waiting</td>
+            <td  id="${dataParser.category.title?replace(" ","")}">Waiting</td>
         </#if>
-        <#if dataParser.onlySelectedStates>
+        <#if dataParser.onlySelectedCities>
         <td>${dataParser.size}</td>
         <#else>
         <td> All</td>
         </#if>
         <#if dataParser.isCompleted>
-            <td><button type="button" class="btn btn-danger" onclick="deleteData('${dataParser.keyword}')">Delete</button></td>
-            <td><a href="/download/${dataParser.keyword}" class="btn btn-success">Download</a></td>
+            <td><button type="button" class="btn btn-danger" onclick="deleteData('${dataParser.category.title}')">Delete</button></td>
+            <td><a href="/download/${dataParser.category.title}" class="btn btn-success">Download</a></td>
         <#else >
             <td><button type="button" class="btn btn-danger" disabled>Delete</button></td>
             <td><button type="button" class="btn btn-success" disabled>Download</button></td>

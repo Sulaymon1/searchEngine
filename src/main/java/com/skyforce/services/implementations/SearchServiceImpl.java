@@ -2,11 +2,11 @@ package com.skyforce.services.implementations;
 
 import com.skyforce.models.Category;
 import com.skyforce.models.City;
-import com.skyforce.repositories.jdbc.CategoryJdbcRepository;
 import com.skyforce.repositories.jpa.CategoryRepository;
-import com.skyforce.repositories.jdbc.CityJdbcRepository;
+import com.skyforce.repositories.jpa.CityRepository;
 import com.skyforce.services.interfaces.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -17,23 +17,25 @@ import java.util.*;
 @Service
 public class SearchServiceImpl implements SearchService {
 
-    private CategoryJdbcRepository jdbcRepository;
-    private CityJdbcRepository cityJdbcRepository;
+    private CategoryRepository categoryRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    public SearchServiceImpl(CategoryJdbcRepository jdbcRepository,
-                             CityJdbcRepository cityJdbcRepository){
-        this.jdbcRepository = jdbcRepository;
-        this.cityJdbcRepository = cityJdbcRepository;
+    public SearchServiceImpl(CategoryRepository categoryRepository,
+                             CityRepository cityRepository){
+        this.categoryRepository = categoryRepository;
+        this.cityRepository = cityRepository;
     }
 
     @Override
     public List<Category> getCategoriesByInput(String input) {
-        return jdbcRepository.findSearchInput(input.toLowerCase());
+        PageRequest pageRequest = new PageRequest(1, 4);
+        return categoryRepository.findAllByCategoryNameToLowerStartsWith(input.toLowerCase(), pageRequest);
     }
 
     @Override
     public List<City> getCitiesByInput(String input){
-        return cityJdbcRepository.findSearchCityInput(input.toLowerCase());
+        PageRequest pageRequest = new PageRequest(1,4);
+        return cityRepository.findAllByStateToLowerStartsWith(input.toLowerCase(), pageRequest);
     }
 }

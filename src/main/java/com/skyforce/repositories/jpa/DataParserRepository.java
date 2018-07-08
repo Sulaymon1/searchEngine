@@ -1,5 +1,6 @@
 package com.skyforce.repositories.jpa;
 
+import com.skyforce.models.Category;
 import com.skyforce.models.DataParser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,6 @@ import java.util.Optional;
 public interface DataParserRepository extends JpaRepository<DataParser, Long> {
     Optional<DataParser> findFirstById(Long id);
     List<DataParser> findAllByIsCompletedFalse();
-    Optional<DataParser> findFirstByKeyword(String keyword);
-    List<DataParser> findAllByKeyword(String keyword);
+    Optional<DataParser> findFirstByCategory(Category category);
+    List<DataParser> findAllByCategory(Category category);
 }

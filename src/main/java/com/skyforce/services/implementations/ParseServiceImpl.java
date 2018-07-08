@@ -1,36 +1,30 @@
 package com.skyforce.services.implementations;
 
-import com.skyforce.models.Category;
-import com.skyforce.models.City;
-import com.skyforce.models.Data;
-import com.skyforce.models.Info;
+import com.skyforce.models.*;
 import com.skyforce.repositories.jpa.CategoryRepository;
 import com.skyforce.repositories.jpa.CityRepository;
 import com.skyforce.repositories.jpa.DataRepository;
 import com.skyforce.services.interfaces.ParseService;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Sulaymon on 11.03.2018.
- */
+
 @Service
+@Slf4j
 public class ParseServiceImpl implements ParseService {
 
     @Autowired
@@ -41,53 +35,50 @@ public class ParseServiceImpl implements ParseService {
     @Autowired
     private DataRepository dataRepository;
 
-    @Autowired
     private ProductParsingService productParsingService;
 
     @Override
     public void parseCategory() {  // parsing for categories if database was recreated
-        Map<String,Category> categoryName = new TreeMap<>();
+        Map<String, Category> categoryName = new TreeMap<>();
         try {
             Document documentSitemap = Jsoup.connect("https://www.yellowpages.com/sitemap").get();
             Elements popular_cities_in_new_york = documentSitemap.getElementsContainingOwnText("Local Yellow Pages");
             Element divElement = popular_cities_in_new_york.first().parent();
             Elements liState = divElement.getElementsByTag("li");
-            for (Element state: liState){
+            for (Element state : liState) {
                 String uriState = state.child(0).attr("href");
                 Document documentState = Jsoup.connect("https://www.yellowpages.com/" + uriState).get();
                 Element popular_cities = documentState.getElementsContainingOwnText("Popular Cities").first().parent().parent();
                 Elements liCities = popular_cities.getElementsByTag("li");
-                for (Element city: liCities){
+                for (Element city : liCities) {
                     String uriCity = city.child(0).attr("href");
-                    String urlCity= "https://www.yellowpages.com"+uriCity+"/category/1";
+                    String urlCity = "https://www.yellowpages.com" + uriCity + "/category/1";
                     try {
                         Document documentCategory = Jsoup.connect(urlCity).get();
                         Element localCategories = documentCategory.getElementsContainingOwnText("Local Categories ").first().parent();
                         Elements liCategories = localCategories.getElementsByTag("li");
-                        for (Element categoryLi: liCategories){
-                            String uriCategory[] = categoryLi.child(0).attr("href").split("/");
+                        for (Element categoryLi : liCategories) {
                             String nameCategory = categoryLi.text();
                             Category categoryObject = Category.builder()
-                                    .categoryUri(uriCategory[1])
-                                    .categoryName(nameCategory)
+                                    .title(nameCategory)
                                     .categoryNameToLower(nameCategory.toLowerCase())
                                     .build();
-                            categoryName.put(nameCategory,categoryObject);
+                            categoryName.put(nameCategory, categoryObject);
                         }
-                    }catch (SocketTimeoutException ignored){
+                    } catch (SocketTimeoutException e) {
+                        log.info(e.getMessage(), e);
                     }
                 }
-                System.out.println(state.text());
             }
             List<Category> categoryList1 = new ArrayList<>(categoryName.values());
             categoryRepository.save(categoryList1);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info(e.getMessage(), e);
         }
     }
 
     @Override
-    public void parseStatesAndCities(){  // parsing for cities search database if database was cleared
+    public void parseStatesAndCities() {  // parsing for cities search database if database was cleared
         List<City> cities = new ArrayList<>();
         try {
             Document documentSitemap = Jsoup.connect("https://www.yellowpages.com/sitemap").get();
@@ -118,50 +109,54 @@ public class ParseServiceImpl implements ParseService {
                     cities.add(cityBuild);
                 }
             }
-        }catch (IOException e){
-            e.printStackTrace();
+        } catch (IOException e) {
+            log.info(e.getMessage(), e);
         }
         cityRepository.save(cities);
     }
 
 
     @Override
-    public List<Data> parseDataByInput(String keyword, String city, int currentPage){
+    public List<Data> parseDataByInput(Category category, City city, int currentPage) {
         // example https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=New+York%2C+NY&page=1
-        keyword = keyword.replace(" ", "+");
-        city = city.replace(" ", "+");
+        String keyword = category.getTitle();
+        if (category.getTitle().contains(" "))
+            keyword = category.getTitle().replace(" ", "+");
+        String cityName = city.getName();
+        if (city.getName().contains(" "))
+            cityName = city.getName().replace(" ", "+");
         currentPage++;
+        productParsingService = new ProductParsingService();
         productParsingService.getProductList().clear();
         try {
             String url = "https://www.yellowpages.com/search?search_terms=" + keyword +
-                    "&geo_location_terms=" + city;
+                    "&geo_location_terms=" + cityName;
             Document document = Jsoup.connect(url).get();
             Elements pagination = document.getElementsByClass("pagination");
             int productNum = 30;
             try {
                 productNum = Integer.parseInt(pagination.first().child(0).ownText());
-            }catch (NullPointerException e){};
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
             int pageNum = 1;
             int itemPerPage = 30;
-            if (productNum > itemPerPage){
-                pageNum = (productNum/itemPerPage)+(productNum%itemPerPage==1?1:0);
+            if (productNum > itemPerPage) {
+                pageNum = (productNum / itemPerPage) + (productNum % itemPerPage == 1 ? 1 : 0);
             }
-            if (currentPage <= pageNum){
+            if (currentPage <= pageNum) {
                 String url1 = url + "&page=" + currentPage;
-                System.out.println(url1);
                 Document document1 = Jsoup.connect(url1).get();
                 Elements n = document1.getElementsByClass("n");
                 ExecutorService executorService = Executors.newFixedThreadPool(15);
-                String finalKeyword = keyword;
-                String finalCity = city;
                 n.forEach(item -> {
                     if (item.childNodes().size() >= 2) {
                         String uri = item.getElementsByTag("a").first().attr("href");
-                        executorService.submit(new ProductThread(uri, productParsingService, finalKeyword, finalCity));
+                        executorService.submit(parse(category, city, uri));
                     }
                 });
                 executorService.shutdown();
-                executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS );
+                executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
                 return productParsingService.getProductList();
             }
         } catch (IOException | InterruptedException e) {
@@ -171,122 +166,89 @@ public class ParseServiceImpl implements ParseService {
     }
 
 
-
-    private volatile Info info;
-
-    public Info getInfo(){
-        return info;
-    }
-    @Autowired
-    private SimpMessagingTemplate simpMessagingTemplate;
-
-    // TODO: 09.04.2018 analyse which keyword and state is most active
+    // TODO: 05.07.2018 parse by template and without it
     @Override
-    public void parseByKeyword(String keyword, List<City> cities){
-        int size = cities.size();
-        double doubleSize = size;
-        int currentCityNum = 1;
-        info =Info.builder()
-                .totalCity(size)
-                .keyword(keyword)
-                .isCompleted(false)
-                .build();
-        for (City city: cities){
-            info.setCurrentCityNum(currentCityNum++);
-            int percentDone = (int)((currentCityNum/doubleSize)*100.0);
-            info.setPercent(percentDone);
-            parseByKeyword(keyword, city.getName());
-            simpMessagingTemplate.convertAndSend("/topic/status", info);
-            System.out.println("done: "+city.getName());
-        }
-        info.setIsCompleted(true);
-        simpMessagingTemplate.convertAndSend("/topic/status", info);
-    }
-
-
-    @Override
-    public void parseByKeyword(String keyword, String city){
-        if (city.contains(","))
-            city = city.substring(0, city.indexOf(","));
+    @Transactional
+    public void parseByCategoryAndCity(Category category, City city)  {
+        productParsingService = new ProductParsingService();
+        String cityName = city.getName();
+        if (cityName.contains(","))
+            cityName = cityName.replace(",", "%2C");
+        if (cityName.contains(" "))
+            cityName = cityName.replace(" ", "+");
+        // example or template
+        // https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=New+York%2C+NY
+        String categoryName = category.getTitle().replace(" ", "+");
+        StringBuilder url = new StringBuilder();
+        url.append("https://www.yellowpages.com/search?search_terms=")
+                .append(categoryName)
+                .append("&geo_location_terms=")
+                .append(cityName);
         try {
-            try {
-                // example https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=New+York%2C+NY
-                String url = "https://www.yellowpages.com/search?search_terms=" + keyword
-                        + "&geo_location_terms=" + city;
-                int pageNum = getPageNum(url);
-                ExecutorService executorService = Executors.newFixedThreadPool(15);
-                for (int page = 1; page <= pageNum; page++) {
-                        Document document = Jsoup.connect(url + "&page=" + page).get();
-                        Elements n = document.getElementsByClass("n");
-                    String finalCity = city;
+            int pageNum = getPageNum(url.toString());
+            ExecutorService executorService = Executors.newFixedThreadPool(15);
+            for (int page = 1; page <= pageNum; page++) {
+                try {
+                    url.append("&page=").append(page);
+                    Thread.sleep(2000);
+                    Document document = Jsoup.connect(url.toString()).userAgent("Mozilla").get();
+                    Elements n = document.getElementsByClass("n");
                     n.forEach(item -> {
-                            if (item.childNodes().size() >= 2) {
-                                String uri = item.getElementsByTag("a").first().attr("href");
-                                executorService.submit(new ProductThread(uri, productParsingService, keyword, finalCity));
-                            }
-                        });
+                        if (item.childNodes().size() >= 2) {
+                            String uri = item.getElementsByTag("a").first().attr("href");
+                            executorService.submit(parse(category, city, uri));
+                        }
+                    });
+                } catch (IOException e) {
+                    log.info("socket exception on url: "+ url+"&page="+page, e);
+                    Thread.sleep(10000);
                 }
-                executorService.shutdown();
-                executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS );
-                List<Data> productList = productParsingService.getProductList();
-                if (productList.size() > 0)
-                    dataRepository.save(productList);
-                productParsingService.getProductList().clear();
-            }catch (SocketException e){
-                e.printStackTrace();
-                Thread.sleep(10000);
             }
+            executorService.shutdown();
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+            List<Data> productList = productParsingService.getProductList();
+            if (productList.size() > 0)
+                dataRepository.save(productList);
+            productParsingService.getProductList().clear();
+
         } catch (Exception e) {
-            e.printStackTrace();
+            log.info("url: "+url);
+            log.info("Got exception on city: "+ city.getName()+" and category: "+category.getTitle() , e);
         }
     }
 
 
-    private static int getPageNum(String url){
+    private int getPageNum(String url) {
         int pageNum = 1;
-        int productNum = 0;
+        int productNum;
         try {
             Document document = Jsoup.connect(url).get();
             Elements pagination = document.getElementsByClass("pagination");
-            productNum = Integer.valueOf(pagination.first().child(0).ownText());
-            int itemPerPage = 30;
-            if (productNum > itemPerPage){
-                pageNum = (productNum/itemPerPage)+(productNum%itemPerPage==1?1:0);
+            if (!pagination.isEmpty()){
+                productNum = Integer.valueOf(pagination.first().child(0).ownText());
+                int itemPerPage = 30;
+                if (productNum > itemPerPage) {
+                    pageNum = (productNum / itemPerPage) + (productNum % itemPerPage == 1 ? 1 : 0);
+                }
             }
-        } catch (Exception e) {
-            pageNum =1;
+        } catch (IOException e) {
+            log.info("url: "+url, e);
         }
 
         return pageNum;
     }
 
-}
-
-class ProductThread extends Thread{
-
-    private String uri;
-    private String keyword;
-    private String city;
-    private ProductParsingService productParsingService;
-
-    ProductThread(String uri,ProductParsingService productParseService, String keyword, String city) {
-        this.uri = uri;
-        this.keyword = keyword;
-        this.city = city;
-        this.productParsingService = productParseService;
+    private Runnable parse(Category category, City city, String uri){
+       return  () -> {
+           String url = "https://www.yellowpages.com" + uri;
+           try {
+                Document document1 = Jsoup.connect(url).get();
+                productParsingService.getProduct(document1, category, city);
+            } catch (IOException e) {
+               log.info("line: "+ e.getStackTrace()[1].getLineNumber());
+               log.info("url: "+ url, e); // unknown host
+           }
+        };
     }
 
-    @Override
-    public void run() {
-        try {
-
-            Document document = Jsoup.connect("https://www.yellowpages.com"+uri).get();
-            productParsingService.getProduct(document, keyword, city);
-
-        } catch (IOException e) {
-            System.out.println("https://www.yellowpages.com"+uri);
-            System.out.println("unknown host");
-        }
-
-    }
 }

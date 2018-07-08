@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Info {
     private Boolean isCompleted;
     private int percent;
-    private String keyword;
+    private String categoryTitle;
     private int totalCity;
     private int currentCityNum;
     private int isButtonStarted; // it will be 1 or 0 it means 1 -> started ; and 0 -> stopped

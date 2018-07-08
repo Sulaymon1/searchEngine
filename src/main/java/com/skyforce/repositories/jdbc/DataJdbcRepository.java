@@ -1,3 +1,4 @@
+/*
 package com.skyforce.repositories.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,12 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 
+*/
 /**
  * Date 11.04.2018
  *
  * @author Hursanov Sulaymon
  * @version v1.0
- **/
+ **//*
+
 @Repository
 public class DataJdbcRepository {
 
@@ -28,3 +31,4 @@ public class DataJdbcRepository {
         });
     }
 }
+*/
