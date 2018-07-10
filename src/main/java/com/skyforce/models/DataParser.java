@@ -39,7 +39,7 @@ public class DataParser {
     private Boolean isParsingCurrent = false;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<City> cities;
 
     @Column(columnDefinition = "int default 0")

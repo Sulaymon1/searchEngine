@@ -23,20 +23,6 @@ public class ParseRestController {
         response.sendRedirect("/dataParser");
     }
 
-    /*@PostMapping("/addNewTask")
-    public ResponseEntity addNewTask(@ModelAttribute("model") @Valid DataParser dataParser,
-                                     BindingResult result, HttpServletResponse response){
-        if (!result.hasErrors()){
-            Optional<Category> categoryOptional = categoryRepository.findByCategoryNameToLower(dataParser.getKeyword().toLowerCase());
-            if (!categoryOptional.isPresent())
-                categoryRepository.saveAndFlush(Category.builder()
-                        .categoryName(dataParser.getKeyword())
-                        .categoryNameToLower(dataParser.getKeyword().toLowerCase()).build());
-            dataParserService.addNewDataToParse(dataParser);
-            return ResponseEntity.ok(dataParser);
-        }
-        return null;
-    }*/
 
 
 

@@ -28,7 +28,7 @@ function connect(){
 
 function update(newMessage){
 
-    var keywordStatus ='#'+newMessage.keyword.replace(" ", "");
+    var keywordStatus ='#'+newMessage.categoryTitle.replace(" ", "");
     var row = $(keywordStatus).html();
     console.log(row)
 

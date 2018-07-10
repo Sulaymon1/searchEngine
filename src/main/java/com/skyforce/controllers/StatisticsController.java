@@ -4,6 +4,7 @@ import com.skyforce.models.Statistics;
 import com.skyforce.services.interfaces.StatisticsService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,10 @@ import java.util.List;
 @Controller
 public class StatisticsController {
 
+    @Value("${logging.file}")
+    private String path;
+
+
     @Autowired
     private StatisticsService statisticsService;
 
@@ -35,7 +40,10 @@ public class StatisticsController {
 
     @GetMapping("/downloadLog")
     public void downloadLog(HttpServletResponse response) throws IOException {
-        InputStream is = new FileInputStream(new File("application.log"));
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition",
+                String.format("attachment; filename=\"%s\"","application.log"));
+        InputStream is = new FileInputStream(new File(path));
         IOUtils.copy(is, response.getOutputStream());
     }
 

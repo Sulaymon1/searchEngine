@@ -168,7 +168,6 @@ public class ParseServiceImpl implements ParseService {
 
     // TODO: 05.07.2018 parse by template and without it
     @Override
-    @Transactional
     public void parseByCategoryAndCity(Category category, City city)  {
         productParsingService = new ProductParsingService();
         String cityName = city.getName();

@@ -6,23 +6,28 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 import java.net.SocketTimeoutException;
 
-/**
+/*
+*
  * Date 07.07.2018
  *
  * @author Hursanov Sulaymon
  * @version v1.0
- **/
+ *
+*/
+
 
 
 @Aspect
 @Component
 @Slf4j
-public class LoggingServiceLayer {
+public class LoggingServiceLayer implements Ordered {
 
     private double total;
     private double passed;
@@ -37,7 +42,7 @@ public class LoggingServiceLayer {
             log.info("Category is: "+ category.getTitle());
         }
 
-  @AfterThrowing(pointcut = "serviceLayer()", throwing = "socketException")
+        @AfterThrowing(pointcut = "serviceLayer()", throwing = "socketException")
         public void logAfterThrowingSocketTimeout(JoinPoint joinPoint, SocketTimeoutException socketException) throws Throwable{
             log.info(joinPoint.getSignature().getName() + " got timeout exception: "+ socketException.getMessage());
             log.info("--------------------------------------");
@@ -68,4 +73,8 @@ public class LoggingServiceLayer {
             log.info("--------------------------------------");
         }
 
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 }

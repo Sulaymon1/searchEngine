@@ -2,6 +2,7 @@ package com.skyforce.services.interfaces;
 
 import com.skyforce.models.DataParser;
 import com.skyforce.models.Info;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,10 @@ import java.util.List;
 public interface DataParserService {
     Info getInfo();
 
+    @Async(value = "dataParserProcess")
     void getNextDataToParse();
+
+    //    void getNextDataToParse();
     void deleteData(String keyword);
     void downloadData(String keyword, HttpServletResponse response);
     List<DataParser> getAllTasks();

@@ -18,9 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
+import java.awt.print.Pageable;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
@@ -68,7 +70,7 @@ public class DataParserServiceImpl implements DataParserService {
     }
 
     @Override
-    @Transactional
+    @Async
     public void addNewDataToParse(String categories) {
         if (categories.length()>0)
             //if you got many categories
@@ -90,9 +92,8 @@ public class DataParserServiceImpl implements DataParserService {
                     dataParserRepository.save(dataParser);
                 }
             }
-        if (isStop){
+        if (isStop)
             getNextDataToParse();
-        }
     }
 
     private volatile Info info;
@@ -103,29 +104,24 @@ public class DataParserServiceImpl implements DataParserService {
     }
 
     @Override
-    @Async(value = "dataParserProcess")
-    @Transactional
     public void getNextDataToParse() {
         isStop = false;
         List<DataParser> dataParserList = getDataParserList();
         if (dataParserList.size() > 0) {
             dataParserList.forEach(dataParser -> {
-                /*if (dataParser.getOnlySelectedCities()) {
+               /* if (dataParser.getOnlySelectedCities()) {
                     dataParser.getStates().forEach(state -> {
                         List<City> cities = cityRepository.findAllByStateToLower(state.toLowerCase());
                         parseService.parseByCategoryAndCities(dataParser.getKeyword(), cities);
                         dataParser.setIsCompleted(true);
                         dataParserRepository.save(dataParser);
                     });
-                } else {*/
-
-                List<City> cities = dataParser.getCities();
-                if (cities == null){
-                    cities = cityRepository.findAll();
-                }
+                } else {
+*/
+                List<City> cities = cityRepository.findAll();
                 int size = cities.size();
                 double doubleSize = size;
-                int currentCityNum = 1;
+                int currentCityNum = 0;
                 info = Info.builder()
                         .totalCity(size)
                         .categoryTitle(dataParser.getCategory().getTitle())
@@ -133,22 +129,23 @@ public class DataParserServiceImpl implements DataParserService {
                         .build();
                 for (City city: cities){
                     try {
+                        int percent = (int) ((currentCityNum / doubleSize) * 100.0);
                         info.setCurrentCityNum(currentCityNum++);
-                        info.setPercent((int)((currentCityNum/doubleSize)*100.0));
+                        info.setPercent(percent);
                         parseService.parseByCategoryAndCity(dataParser.getCategory(), city);
                         dataParser.setCurrentCityNumber(currentCityNum);
                         dataParserRepository.save(dataParser);
                         simpMessagingTemplate.convertAndSend("/topic/status", info);
                     }catch (Throwable e){
-                        log.error("throwable url: "+e.getMessage(), e);
+                        log.error("throwable: "+e.getMessage(), e);
                     }
                 }
                 info.setIsCompleted(true);
                 simpMessagingTemplate.convertAndSend("/topic/status", info);
                 dataParser.setIsCompleted(true);
                 dataParserRepository.save(dataParser);
-                /*}*/
-            });
+                });
+            /*});*/
             getNextDataToParse(); // it will check for new categories
         }
         isStop = true;
