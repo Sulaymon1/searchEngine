@@ -1,0 +1,143 @@
+1	307 W 54th St, New York, NY 10019	\N	Regas N Y	(646) 652-6922	http://www.regasstudio.com	card	New York
+2	611 Broadway, New York, NY 10012	Lillian-Simon@quotablecards.com	Quotable Cards	(212) 420-7552	http://www.quotablecards.com/locator.php	card	New York
+3	191 W 4th St, New York, NY 10014	considerosity@gmail.com	Considerosity	(646) 397-4438	\N	card	New York
+4	1416 3rd Ave, New York, NY 10028	dbaasch@imediasource.org	The Source	(212) 249-6609	\N	card	New York
+5	298 Mulberry St, New York, NY 10012	\N	CVS Pharmacy	(212) 226-6111	http://www.cvs.com	card	New York
+6	1751 2nd Ave Frnt 3, New York, NY 10128	johnbpig2@gmail.com	Lisa's On Second	(212) 423-0100	http://hallmark.com	card	New York
+7	1751 2nd Ave Frnt 3, New York, NY 10128	johnbpig2@gmail.com	Lisa's On 2Nd Avenue	(212) 423-0100	http://www.hallmark.com	card	New York
+8	100 Park Ave, New York, NY 10017	info@giftcardoccasions.com	Gift Card Occasions	(212) 351-5089	http://www.giftcardoccasions.com	card	New York
+9	940 Broadway, New York, NY 10010	web@www.papyrusonline.com	Papyrus	(212) 228-2877	http://www.papyrusonline.com	card	New York
+10	247 E 57th St Frnt A, New York, NY 10022	contact@extraordinaryny.com	Extraordinary Ny Inc	(212) 223-9151	http://www.extraordinaryny.com	card	New York
+11	1601 3rd Ave, New York, NY 10128	\N	Lisa's Hallmark	(212) 534-3496	http://www.hallmark.com	card	New York
+12	353 W 47th St, New York, NY 10036	delphiniumhome@gmail.com	Delphinium Limited	(212) 333-7732	http://www.delphiniumhome.com	card	New York
+13	33 W 34th St, New York, NY 10001	\N	Fotofolio	(347) 834-8948	http://fotofolio.com	card	New York
+14	7 Hanover St, New York, NY 10005	\N	Hallmark Gold Crown	(212) 825-1625	http://www.hallmark.com	card	New York
+15	240 W 54th St, New York, NY 10019	\N	Regas New York	(646) 652-6922	http://www.iguananyc.com	card	New York
+16	23 W 18th St, New York, NY 10011	info@PaperPresentation.com	Paper Presentation	(212) 463-7035	http://www.paperpresentation.com	card	New York
+17	6 W 18th St Ste 6l, New York, NY 10011	\N	Avanti Press Inc	(212) 414-1025	http://www.avantipress.com	card	New York
+18	380 E 10th St Frnt 2, New York, NY 10009	info@productionjunction.com	Paris Productions	(212) 473-4696	http://www.parisproductions.com	card	New York
+19	192 8th Ave Apt 1, New York, NY 10011	\N	Rainbows & Triangles	(212) 691-6067	http://rainbowsandtriangles.com	card	New York
+20	1271 Avenue Of The Americas Fl Conc4, New York, NY 10020	\N	Hallmark Gold Crown	(212) 977-5362	http://www.hallmark.com	card	New York
+21	51 Madison Ave Lbby 1, New York, NY 10010	\N	Bob's Cards & Gifts	(212) 686-0044	http://newyorklife.com	card	New York
+22	901 Avenue Of The Americas, New York, NY 10001	\N	Jen's Hallmark	(212) 244-1414	http://www.hallmark.com	card	New York
+23	331 E 9th St, New York, NY 10003	santo@sourceunltd.com	The Source Unltd Print & Copy Shop	(212) 473-7833	http://www.sourceunltd.com	card	New York
+24	87 34th St Unit 3, Brooklyn, NY 11232	sales@paylessofficeonline.com	Payless Office Products Corp	(718) 369-0200	http://www.paylessofficeonline.com	card	Brooklyn
+25	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+26	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+27	252 Atlantic Ave, Brooklyn, NY 11201	\N	Michaels	(347) 442-7606	http://www.michaels.com	card	Brooklyn
+28	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+29	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+30	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+31	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+32	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+33	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+34	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+35	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+36	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+37	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+38	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+39	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+40	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+41	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+42	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+43	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+44	252 Atlantic Ave, Brooklyn, NY 11201	\N	Michaels	(347) 442-7606	http://www.michaels.com	card	Brooklyn
+45	87 34th St Unit 3, Brooklyn, NY 11232	sales@paylessofficeonline.com	Payless Office Products Corp	(718) 369-0200	http://www.paylessofficeonline.com	card	Brooklyn
+46	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+47	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+48	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+49	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+50	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+51	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+52	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+53	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+54	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+55	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+56	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+57	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+58	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+59	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+60	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+61	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+62	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+63	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+64	252 Atlantic Ave, Brooklyn, NY 11201	\N	Michaels	(347) 442-7606	http://www.michaels.com	card	Brooklyn
+65	87 34th St Unit 3, Brooklyn, NY 11232	sales@paylessofficeonline.com	Payless Office Products Corp	(718) 369-0200	http://www.paylessofficeonline.com	card	Brooklyn
+66	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+67	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+68	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+69	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+70	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+71	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+72	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+73	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+74	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+75	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+76	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+77	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+78	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+79	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+80	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+81	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+82	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+83	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+84	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+85	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+86	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+87	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+88	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+89	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+90	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+91	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+92	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+93	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+94	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+95	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+96	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+97	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+98	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+99	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+100	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+101	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+102	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+103	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+104	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+105	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+106	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+107	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+108	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+109	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+110	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+111	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+112	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+113	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+114	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+115	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+116	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+117	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+118	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+119	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+120	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+121	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+122	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+123	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+124	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+125	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+126	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+127	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+128	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+129	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+130	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+131	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+132	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn
+133	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+134	Brooklyn, NY 11238	echarrow@gmail.com	Charrow Illustration	(202) 368-8491	http://charrow.com	card	Brooklyn
+135	8318 5th Ave, Brooklyn, NY 11209	\N	Waldinger's Prescription Pharmacy	(718) 745-2100	http://www.waldingersrx.com	card	Brooklyn
+136	140 58TH St Ste 3M, Brooklyn, NY 11220	info@alliedsamplecard.com	Allied Sample Card Co Inc	(718) 238-0523	http://www.alliedsamplecard.com	card	Brooklyn
+137	1598 Flatbush Ave, Brooklyn, NY 11210	\N	CVS Pharmacy	(718) 637-5006	http://www.cvs.com	card	Brooklyn
+138	529 77th St, Brooklyn, NY 11209	debbie@ipvstudio.com	Ira's Peripheral Vision	(718) 836-4819	http://www.irasperipheralvisions.com	card	Brooklyn
+139	8511 5th Ave, Brooklyn, NY 11209	today@americangreetings.com	American Greetings	(718) 745-2656	http://americangreetings.com	card	Brooklyn
+140	3365 Neptune Ave, Brooklyn, NY 11224	\N	Sea Gate Stationery	(718) 372-7038	http://seagate.com	card	Brooklyn
+141	1965 86th St, Brooklyn, NY 11214	rias.hallmark@gmail.com	Ria's Hallmark Shop	(718) 266-3436	http://www.hallmark.com	card	Brooklyn
+142	137 Avenue U, Brooklyn, NY 11223	sales@poojaenterprises.net	Pooja Enterprises Inc	(718) 449-1006	http://poojaenterprises.net	card	Brooklyn
+143	2346 83rd St, Brooklyn, NY 11214	tracyhattem@alittlecardco.com	Card Connect	(718) 372-4765	http://www.appliancesconnection.com	card	Brooklyn

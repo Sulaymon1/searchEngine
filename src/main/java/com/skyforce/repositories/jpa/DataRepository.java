@@ -12,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Sulaymon on 12.03.2018.
- */
+
 public interface DataRepository extends JpaRepository<Data, Long> {
     List<Data> findAllByCategoryAndCityAndEmailIsNotNull(Category category, City city, Pageable pageable);
 }

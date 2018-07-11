@@ -30,14 +30,5 @@ public class Application {
         SpringApplication.run(Application.class);
     }
 
-    @Bean(name = "dataParserProcess")
-    public Executor asyncExecutor(){
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(2);
-        executor.setMaxPoolSize(2);
-        executor.setQueueCapacity(500);
-        executor.setThreadNamePrefix("dataParserService-");
-        executor.initialize();
-        return executor;
-    }
+
 }

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 
 @RestController
 public class ParseRestController {
@@ -33,7 +34,7 @@ public class ParseRestController {
     }
 
     @GetMapping("/download/{keyword}")
-    public void downloadData(@PathVariable("keyword") String keyword, HttpServletResponse response){
+    public void downloadData(@PathVariable("keyword") String keyword, HttpServletResponse response) throws SQLException {
         dataParserService.downloadData(keyword, response);
     }
 }

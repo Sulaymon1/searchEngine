@@ -9,12 +9,18 @@ import com.skyforce.models.Info;
 import com.skyforce.repositories.jpa.CategoryRepository;
 import com.skyforce.repositories.jpa.CityRepository;
 import com.skyforce.repositories.jpa.DataParserRepository;
+import com.skyforce.repositories.jpa.DataRepository;
 import com.skyforce.services.interfaces.DataParserService;
 import com.skyforce.services.interfaces.ParseService;
 import com.skyforce.util.CopyDBToFile;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -22,11 +28,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.awt.print.Pageable;
 import java.io.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
 
 /**
  * Date 07.04.2018
@@ -158,9 +167,10 @@ public class DataParserServiceImpl implements DataParserService {
     }
 
     @Override
-    public void downloadData(String keyword, HttpServletResponse response){
+    public void downloadData(String keyword, HttpServletResponse response) throws SQLException {
 
         String path = copyDBToFile.copy(keyword);
+
         try {
             InputStream inputStream = new FileInputStream(path+"/"+keyword+".txt");
 

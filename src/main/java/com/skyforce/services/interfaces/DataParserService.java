@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public interface DataParserService {
 
     //    void getNextDataToParse();
     void deleteData(String keyword);
-    void downloadData(String keyword, HttpServletResponse response);
+    void downloadData(String keyword, HttpServletResponse response) throws SQLException;
     List<DataParser> getAllTasks();
 
     void addNewDataToParse(String categories);
